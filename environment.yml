@@ -1,0 +1,18 @@
+name: fotbcd
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - numpy
+  - pillow
+  - opencv
+  - tqdm
+  - pip
+
+  - pip:
+      - timm==1.0.20
+      - albumentations==1.3.1
+      - tensorboard==2.15.1

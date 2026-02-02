@@ -107,7 +107,7 @@ Cross-domain generalization (Recall):
 
 - **Code**: MIT
 - **FOTBCD-Binary / FOTBCD-Instances**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-- **Source Data**: BD ORTHO / BD TOPO by IGN France under [Licence Ouverte 2.0](https://www.etalab.gouv.fr/licence-ouverte-open-licence/)
+- **Source Data**: BD ORTHO / BD TOPO by IGN France under [Licence Ouverte 2.0](https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/)
 
 ### FOTBCD-220k (Commercial License)
 

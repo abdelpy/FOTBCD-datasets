@@ -1,4 +1,4 @@
-# FOTBCD: French Orthophoto Building Change Detection
+# FOTBCD: A Geographically Diverse Dataset for Building Change Detection from High-Resolution Aerial Imagery
 
 A large-scale building change detection benchmark from French orthophotos and topographic data.
 
@@ -120,6 +120,21 @@ For industrial applications requiring larger scale and full instance-level annot
 | **Commercial license** | For production deployment and proprietary applications |
 
 Contact **info@retgen.ai** for licensing inquiries. Academic collaborations are welcome.
+## Citation
+
+If you use FOTBCD in your research, please cite our paper:
+
+```bibtex
+@misc{moubane2026fotbcd,
+      title={FOTBCD: A Large-Scale Building Change Detection Benchmark from French Orthophotos and Topographic Data},
+      author={Abdelrrahman Moubane},
+      year={2026},
+      eprint={2601.22596},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2601.22596},
+}
+```
 
 ## Acknowledgments
 

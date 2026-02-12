@@ -1,3 +1,5 @@
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-FOTBCD--Binary-yellow)](https://huggingface.co/datasets/retgenai/FOTBCD-Binary) [![arXiv](https://img.shields.io/badge/arXiv-2601.22596-b31b1b.svg)](https://arxiv.org/abs/2601.22596) [![Code License: MIT](https://img.shields.io/badge/Code-MIT-green.svg)](LICENSE) [![Dataset License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Datasets-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 # FOTBCD: A Geographically Diverse Dataset for Building Change Detection from High-Resolution Aerial Imagery
 
 A large-scale building change detection benchmark from French orthophotos and topographic data.

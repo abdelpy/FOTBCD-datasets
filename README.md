@@ -10,6 +10,8 @@ A large-scale building change detection benchmark from French orthophotos and to
 
 ## Datasets
 
+We release two community versions derived from FOTBCD, both freely available under CC BY-NC-SA 4.0:
+
 | Dataset | Departments | Pairs | Patch Size | Resolution | Annotation | License |
 |---------|-------------|-------|------------|------------|------------|---------|
 | **FOTBCD-Binary** | 28 (25 train / 3 eval) | ~28k | 512x512 | 0.2m | Binary mask | CC BY-NC-SA 4.0 |
@@ -43,6 +45,8 @@ FOTBCD-Instances/
         train/
             before/
             after/
+        val/
+        test/
     annotations/
         train.json      # COCO format (categories: UNCHANGED=1, DEMOLISHED=2, NEW=3)
         val.json
@@ -111,14 +115,14 @@ Cross-domain generalization (Recall):
 - **FOTBCD-Binary / FOTBCD-Instances**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 - **Source Data**: BD ORTHO / BD TOPO by IGN under [Licence Ouverte 2.0](https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/)
 
-### FOTBCD-220k (Commercial License)
+### FOTBCD (Commercial License)
 
 For industrial applications requiring larger scale and full instance-level annotations:
 
 | | |
 |---|---|
 | **220,000+ image pairs** | Multi-region coverage across France |
-| **1.5M+ building polygons** | NEW / DEMOLISHED / UNCHANGED per instance |
+| **950k+ building polygons** | NEW / DEMOLISHED / UNCHANGED per instance |
 | **Commercial license** | For production deployment and proprietary applications |
 
 Contact **info@retgen.ai** for licensing inquiries. Academic collaborations are welcome.

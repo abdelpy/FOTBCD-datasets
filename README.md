@@ -79,7 +79,7 @@ python evaluate.py --checkpoints_dir ./checkpoints --batch_size 32
 
 Cross-domain generalization (IoU):
 
-| Train / Test | FOTBCD-Binary | LEVIR-CD+ | WHU-CD |
+| ↓ Train / Test → | FOTBCD-Binary | LEVIR-CD+ | WHU-CD |
 |--------------|--------|-----------|--------|
 | FOTBCD-Binary| 0.818  | 0.299     | 0.697  |
 | LEVIR-CD+    | 0.300  | 0.737     | 0.544  |
@@ -87,7 +87,7 @@ Cross-domain generalization (IoU):
 
 Cross-domain generalization (F1):
 
-| Train / Test | FOTBCD-Binary | LEVIR-CD+ | WHU-CD |
+| ↓ Train / Test → | FOTBCD-Binary | LEVIR-CD+ | WHU-CD |
 |--------------|--------|-----------|--------|
 | FOTBCD-Binary| 0.900  | 0.460     | 0.822  |
 | LEVIR-CD+    | 0.462  | 0.848     | 0.704  |
@@ -95,7 +95,7 @@ Cross-domain generalization (F1):
 
 Cross-domain generalization (Precision):
 
-| Train / Test | FOTBCD-Binary | LEVIR-CD+ | WHU-CD |
+| ↓ Train / Test → | FOTBCD-Binary | LEVIR-CD+ | WHU-CD |
 |--------------|--------|-----------|--------|
 | FOTBCD-Binary| 0.915  | 0.819     | 0.803  |
 | LEVIR-CD+    | 0.802  | 0.880     | 0.829  |
@@ -103,7 +103,7 @@ Cross-domain generalization (Precision):
 
 Cross-domain generalization (Recall):
 
-| Train / Test | FOTBCD-Binary | LEVIR-CD+ | WHU-CD |
+| ↓ Train / Test → | FOTBCD-Binary | LEVIR-CD+ | WHU-CD |
 |--------------|--------|-----------|--------|
 | FOTBCD-Binary| 0.886  | 0.320     | 0.841  |
 | LEVIR-CD+    | 0.324  | 0.819     | 0.612  |

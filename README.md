@@ -1,8 +1,8 @@
-[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-FOTBCD--Binary-yellow)](https://huggingface.co/datasets/retgenai/FOTBCD-Binary) [![arXiv](https://img.shields.io/badge/arXiv-2601.22596-b31b1b.svg)](https://arxiv.org/abs/2601.22596) [![Code License: MIT](https://img.shields.io/badge/Code-MIT-green.svg)](LICENSE) [![Dataset License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Datasets-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Full%20FOTBCD-yellow)](https://huggingface.co/datasets/abdevd/FOTBCD) [![FOTBCD-Binary](https://img.shields.io/badge/🤗%20Hugging%20Face-FOTBCD--Binary-yellow)](https://huggingface.co/datasets/abdevd/FOTBCD-Binary) [![arXiv](https://img.shields.io/badge/arXiv-2601.22596-b31b1b.svg)](https://arxiv.org/abs/2601.22596) [![Code License: MIT](https://img.shields.io/badge/Code-MIT-green.svg)](LICENSE) [![Dataset License: CC BY 4.0](https://img.shields.io/badge/Datasets-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 # FOTBCD: A Geographically Diverse Dataset for Building Change Detection from High-Resolution Aerial Imagery
 
-A large-scale building change detection benchmark from French orthophotos and topographic data.
+A large-scale building change detection benchmark from French orthophotos and topographic data. The full dataset is now openly available on [Hugging Face](https://huggingface.co/datasets/abdevd/FOTBCD).
 
 <p align="center">
   <img src="images/visualization.png" width="100%">
@@ -10,12 +10,12 @@ A large-scale building change detection benchmark from French orthophotos and to
 
 ## Datasets
 
-We release two community versions derived from FOTBCD, both freely available under CC BY-NC-SA 4.0:
+We openly release the complete FOTBCD collection alongside a compact binary benchmark:
 
 | Dataset | Departments | Pairs | Patch Size | Resolution | Annotation | License |
 |---------|-------------|-------|------------|------------|------------|---------|
-| **FOTBCD-Binary** | 28 (25 train / 3 eval) | ~28k | 512x512 | 0.2m | Binary mask | CC BY-NC-SA 4.0 |
-| **FOTBCD-Instances** | 6 (3 train / 3 eval) | 4k | 512x512 | 0.2m | COCO polygons | CC BY-NC-SA 4.0 |
+| **FOTBCD** | 28 (25 train / 3 eval) | 223,675 | 512x512 | 0.2m | 960,880 COCO polygons (`UNCHANGED`, `DEMOLISHED`, `NEW`) | CC BY 4.0 |
+| **FOTBCD-Binary** | 28 (25 train / 3 eval) | 27,871 | 512x512 | 0.2m | Binary mask | CC BY 4.0 |
 
 ---
 
@@ -24,13 +24,54 @@ We release two community versions derived from FOTBCD, both freely available und
   <em>Geographic coverage: 25 training departments (green), 3 held-out evaluation departments (blue)</em>
 </p>
 
-### Download
+### Download and streaming
 
-[Download (Google Drive)](https://drive.google.com/drive/folders/1XpV4ouhvVg0M28S7-u7PbDhYA56pQHRm?usp=sharing) - contains FOTBCD-Binary, FOTBCD-Instances, and pretrained weights.
+- [Full FOTBCD on Hugging Face](https://huggingface.co/datasets/abdevd/FOTBCD) - 223,675 pairs in 171 WebDataset TAR shards (about 170 GiB).
+- [FOTBCD-Binary on Hugging Face](https://huggingface.co/datasets/abdevd/FOTBCD-Binary) - 27,871 pairs with pixel-wise change masks.
+- [Google Drive](https://drive.google.com/drive/folders/1XpV4ouhvVg0M28S7-u7PbDhYA56pQHRm?usp=sharing) - FOTBCD-Binary and pretrained weights.
+
+The full release can be streamed directly without downloading the complete archive:
+
+```bash
+pip install webdataset pillow
+```
+
+```python
+import webdataset as wds
+
+url = (
+    "pipe:curl -s -L "
+    "https://huggingface.co/datasets/abdevd/FOTBCD/resolve/main/"
+    "data/train/train-{000000..000168}.tar"
+)
+
+dataset = (
+    wds.WebDataset(url, shardshuffle=True)
+    .shuffle(5_000)
+    .decode("pil")
+    .to_tuple("before.png", "after.png", "json")
+)
+
+before_image, after_image, annotation = next(iter(dataset))
+```
 
 ### Structure
 
 ```
+FOTBCD/
+    data/
+        train/
+            train-000000.tar ... train-000168.tar
+        val/
+            val-000000.tar
+        test/
+            test-000000.tar
+
+# Every WebDataset sample contains:
+{id}.before.png
+{id}.after.png
+{id}.json          # spatial metadata and COCO polygon annotations
+
 FOTBCD-Binary/
     images/
         train/
@@ -40,17 +81,6 @@ FOTBCD-Binary/
         val/
         test/
 
-FOTBCD-Instances/
-    images/
-        train/
-            before/
-            after/
-        val/
-        test/
-    annotations/
-        train.json      # COCO format (categories: UNCHANGED=1, DEMOLISHED=2, NEW=3)
-        val.json
-        test.json
 ```
 
 ## Installation
@@ -112,20 +142,10 @@ Cross-domain generalization (Recall):
 ## License
 
 - **Code**: MIT
-- **FOTBCD-Binary / FOTBCD-Instances**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- **Full FOTBCD dataset**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+- **FOTBCD-Binary**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - **Source Data**: BD ORTHO / BD TOPO by IGN under [Licence Ouverte 2.0](https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/)
 
-### FOTBCD (Commercial License)
-
-For industrial applications requiring larger scale and full instance-level annotations:
-
-| | |
-|---|---|
-| **220,000+ image pairs** | Multi-region coverage across France |
-| **950k+ building polygons** | NEW / DEMOLISHED / UNCHANGED per instance |
-| **Commercial license** | For production deployment and proprietary applications |
-
-Contact **info@retgen.ai** for licensing inquiries. Academic collaborations are welcome.
 ## Citation
 
 If you use FOTBCD in your research, please cite our paper:
